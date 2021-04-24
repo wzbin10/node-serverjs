@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="title"><h2>title</h2></div>
+        <div class="content">
+            <form action="" method="post" name="form" onsubmit="handleSubmit()">
+                <label for="username">
+                    用户：<input type="text" name="username">
+                </label>
+                <br>
+               <label for="password">
+                    密码：<input type="password" name="password">
+                </label>
+                <br>
+                <button  type="submit">登录</button>
+            </form>
+        </div>
+    </div>
+    <script src="./ajax.js"></script>
+    <script>
+        function handleSubmit(){
+            setAjax({
+                url: '/login',
+                data: {
+                    action: 'login', 
+                    username: form.username.value, 
+                    password: form.password.value
+                },
+                type: 'get',
+                success: function (str){
+                    // console.log(str);
+                    var json = eval('('+str+')');
+
+                    if(json.ok){
+                        alert('登录成功');
+                    }else{
+                        alert('登录失败：'+json.msg);
+                    }
+                },
+                error: function (){
+                    alert('通信错误');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

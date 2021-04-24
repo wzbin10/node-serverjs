@@ -1,0 +1,7 @@
+“#“e # nodejs
+
+##运行 node server.js 启动
+
+##浏览器访问 http://localhost:8081/index.html
+
+##模拟账号密码：admin/123456
